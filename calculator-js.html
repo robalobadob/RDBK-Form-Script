@@ -12,12 +12,12 @@
     function calculateResult($form){
         var lsFactor;
         var petType = "Dog";
-        var weightLbs = 16;
-        var breedSize = "Small";
-        var ageYears = 15;
-        var ageMonths = 0; //@TODO: test undefined months
-        var bodyScore = "Stage 1";
-        var activityLevel = "Moderately Active (1-3 hours per day";
+        var weightLbs = 30;
+        var breedSize = "Medium";
+        var ageYears = 17;
+        var ageMonths = 4; //@TODO: test undefined months
+        var bodyScore = "Stage 2";
+        var activityLevel = "Moderately Active (1-3 hours per day)";
         var weightKg = weightLbs / 2.2;
 
         if (petType == "Dog") {
@@ -38,22 +38,53 @@
                     } else if (bodyScore == "Stage 5") {
                         // tested
                         lsFactor = 62;
-                    } else {
+                    } else if (bodyScore != "Stage 1" || "Stage 5") {
                         if (activityLevel == "Highly Active / Working Dog (3 to 6 hours)") {
-                            // tested
+                            //tested
                             lsFactor = 100;
-                        } else if (activityLevel == "Moderately Active (1-3 hours per day") {
-                            // tested
+                        } else if (activityLevel == "Moderately Active (1-3 hours per day)") {
+                            //tested
                             lsFactor = 72;
                         } else if (activityLevel == "Lazy / Low (Less than 1 hour per day)") {
-                            // tested
+                            //tested
+                            lsFactor = 72;
+                        } 
+                    } 
+                } else {
+                    if (activityLevel == "Lazy / Low (Less than 1 hour per day)") {
+                        lsFactor = 52;
+                    } else if (["Stage 2","Stage 3","Stage 4"].indexOf(bodyScore) > -1) {
+                        lsFactor = 62; //only moderate value is given
+                    } else if (bodyScore = "Stage 1") {
+                        lsFactor = 72;
+                    } else if (bodyScore = "Stage 5") {
+                        lsFactor = 52;
+                    }
+                } //end of small breed
+            } else if (breedSize = "Medium") {
+                if (ageMonths < 8 && ageYears < 1) {
+                    lsFactor = 115;
+                } else if (ageYears < 14) {
+                    if (bodyScore == "Stage 1") {
+                        lsFactor = 82;
+                    } else if (bodyScore == "Stage 5") {
+                        lsFactor = 62;
+                    } else {
+                        if (activityLevel == "Highly Active / Working Dog (3 to 6 hours)") {
+                            lsFactor = 100;
+                        } else if (activityLevel == "Moderately Active (1-3 hours per day)") {
+                            lsFactor = 72;
+                        } else if (activityLevel == "Lazy / Low (Less than 1 hour per day)") {
                             lsFactor = 72;
                         }
-                    } //end dog body score
-                } //end age years
-            } //end important factors / breed size
-        }      
-
+                    }
+                } else {
+                    if (activityLevel == "Lazy / Low (Less than 1 hour per day)") {
+                        lsFactor = 52;
+                    }
+                }
+            } // end of breed size
+        } //end of dog     
         console.log(lsFactor);
     }
 
