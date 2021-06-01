@@ -9,6 +9,17 @@
     
     var result = 0;
 
+    // function calculateResult($form){
+    //     var lsFactor;
+    //     var petType = $form.find('select[name="pet_type"] option:selected').val();
+    //     var weightLbs = $form.find('input[name="weight__lbs_"]').val();
+    //     var breedSize = $form.find('select[name="breed_size"] option:selected').val();
+    //     var ageYears = $form.find('input[name="age_years"]').val();
+    //     var ageMonths = $form.find('input[name="age_months"]').val();
+    //     var bodyScore = $form.find('select[name="body_condition_score"] option:selected').val();
+    //     var activityLevel = $form.find('select[name="activity_level"] option:selected').val();
+    //     var weightKg = weightLbs / 2.2;
+
     function calculateResult($form) {
         var lsFactor;
         var petType = "Dog";
@@ -221,10 +232,22 @@
         console.log(lsFactor);
     }
 
+    // result = (lsFactor * 0.9) * (weightKg * 0.75);
+    // $form.find('input[name="calculation__result"]').val(result);
     calculateResult(0);
 
     
     </script>
+    <!-- <script>
+        hbspt.forms.create({
+          region: "na1",
+          portalId: "4119026",
+          formId: "d5e1d82e-0bf1-43b6-b5a7-c83f316057b6",
+          onFormSubmit: function($form, ctx) {
+            calculateResult($form)
+          }
+      });
+      </script> -->
 </head>
 <body>
     <h1>Testing Calculator</h1>
