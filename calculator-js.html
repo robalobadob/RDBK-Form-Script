@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>    
-    
-    var result = 0;
 
     // function calculateResult($form){
     //     var lsFactor;
@@ -21,14 +19,15 @@
     //     var weightKg = weightLbs / 2.2;
 
     function calculateResult($form) {
+        var result;
         var lsFactor;
         var petType = "Dog";
         var weightLbs = 30;
         var breedSize = "Giant";
-        var ageYears = 1;
+        var ageYears = 8;
         var ageMonths = 5; //@TODO: test undefined months
         var bodyScore = "Stage 3";
-        var activityLevel = "Moderately Active (1-3 hours per day)";
+        var activityLevel = "Highly Active / Working Dog (3 to 6 hours)";
         var weightKg = weightLbs / 2.2;
 
         if (petType == "Dog") {
@@ -229,10 +228,15 @@
                 }
             }
         } //end of cat  
-        console.log(lsFactor);
-    }
+        if (typeof lsFactor !== 'undefined') {
+            result = Math.round((lsFactor * 0.9) * (weightKg * 0.75));
+        } else {
+            result = "lsFactor unable to be calculated";
+        }
+        console.log(result);
+    } // end of calculateResult function
 
-    // result = (lsFactor * 0.9) * (weightKg * 0.75);
+    
     // $form.find('input[name="calculation__result"]').val(result);
     calculateResult(0);
 
