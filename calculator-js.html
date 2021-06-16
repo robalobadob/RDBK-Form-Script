@@ -4,226 +4,166 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script>    
-    // No you are not! - Hi From Airrick!
-    // function calculateResult($form){
-    //     var lsFactor;
-    //     var petType = $form.find('select[name="pet_type"] option:selected').val();
-    //     var weightLbs = $form.find('input[name="weight__lbs_"]').val();
-    //     var breedSize = $form.find('select[name="breed_size"] option:selected').val();
-    //     var ageYears = $form.find('input[name="age_years"]').val();
-    //     var ageMonths = $form.find('input[name="age_months"]').val();
-    //     var bodyScore = $form.find('select[name="body_condition_score"] option:selected').val();
-    //     var activityLevel = $form.find('select[name="activity_level"] option:selected').val();
-    //     var weightKg = weightLbs / 2.2;
-
-    function calculateResult($form) {
-        var result;
+    <title>Document</title>  
+‎<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script charset="utf-8" type="text/javascript" target="_blank" src="//js.hsforms.net/forms/shell.js"></script>
+<script>
+var result = 0;
+  
+function calculateResult($form){
         var lsFactor;
-        var petType = "Dog";
-        var weightLbs = 30;
-        var breedSize = "Giant";
-        var ageYears = 8;
-        var ageMonths = 5; //@TODO: test undefined months
-        var bodyScore = "Stage 3";
-        var activityLevel = "Highly Active / Working Dog (3 to 6 hours)";
+        var petType = $form.find('select[name="TICKET.pet_type"] option:selected').val();
+        var weightLbs = $form.find('input[name="TICKET.weight__lbs_"]').val();
+        var breedSize = $form.find('select[name="TICKET.breed_size"] option:selected').val();
+        var ageYears = $form.find('input[name="TICKET.age_years"]').val();
+        var ageMonths = $form.find('input[name="TICKET.age_months"]').val();
+        var bodyScore = $form.find('select[name="TICKET.body_condition_score"] option:selected').val();
+        var activityLevel = $form.find('select[name="TICKET.activity_level"] option:selected').val();
         var weightKg = weightLbs / 2.2;
 
-        if (petType == "Dog") {
+       if (petType == "Dog") {
             if (ageMonths < 4 && ageYears < 1) {
-                // tested
                 lsFactor = 135;
             } else if (activityLevel == "Pregnant / lactating") {
-                //tested
                 lsFactor = 100;
             } else if (breedSize == "Small") {
                 if (ageMonths < 6 && ageYears < 1) {
-                    //tested
                     lsFactor = 115;
                 } else if (ageYears < 16) {
                     if (bodyScore == "Stage 1") {
-                        // tested
                         lsFactor = 82;
                     } else if (bodyScore == "Stage 5") {
-                        // tested
                         lsFactor = 62;
                     } else {
-                        if (activityLevel == "Highly Active / Working Dog (3 to 6 hours)") {
-                            //tested
+                        if (activityLevel == "Highly Active / Working Dog  (3 to 6 hours)") {
                             lsFactor = 100;
-                        } else if (activityLevel == "Moderately Active (1-3 hours per day)") {
-                            //tested
+                        } else if (activityLevel == "Moderately Active  (1-3 hours per day)") {
                             lsFactor = 72;
                         } else if (activityLevel == "Lazy / Low (Less than 1 hour per day)") {
-                            //tested
                             lsFactor = 72;
                         } 
                     } 
                 } else {
                     if (activityLevel == "Lazy / Low (Less than 1 hour per day)") {
-                        // tested
                         lsFactor = 52;
                     } else if (["Stage 2","Stage 3","Stage 4"].indexOf(bodyScore) > -1) {
-                        lsFactor = 62; //only moderate value is given
+                        lsFactor = 62; 
                     } else if (bodyScore == "Stage 1") {
-                        // tested
                         lsFactor = 72;
                     } else if (bodyScore == "Stage 5") {
-                        // tested
                         lsFactor = 52;
                     }
                 } //end of small breed
             } else if (breedSize == "Medium") {
                 if (ageMonths < 8 && ageYears < 1) {
-                    // tested
                     lsFactor = 115;
                 } else if (ageYears < 14) {
                     if (bodyScore == "Stage 1") {
-                        // tested
                         lsFactor = 82;
                     } else if (bodyScore == "Stage 5") {
-                        // tested
                         lsFactor = 62;
                     } else {
-                        if (activityLevel == "Highly Active / Working Dog (3 to 6 hours)") {
-                            // tested
+                        if (activityLevel == "Highly Active / Working Dog  (3 to 6 hours)") {
                             lsFactor = 100;
-                        } else if (activityLevel == "Moderately Active (1-3 hours per day)") {
-                            // tested
+                        } else if (activityLevel == "Moderately Active  (1-3 hours per day)") {
                             lsFactor = 72;
                         } else if (activityLevel == "Lazy / Low (Less than 1 hour per day)") {
-                            // tested
                             lsFactor = 72;
                         }
                     }
                 } else {
                     if (activityLevel == "Lazy / Low (Less than 1 hour per day)") {
-                        // tested
                         lsFactor = 52;
                     } else if (["Stage 2","Stage 3","Stage 4"].indexOf(bodyScore) > -1) {
-                        // tested
                         lsFactor = 62;
                     } else if (bodyScore == "Stage 1") {
-                        // tested
                         lsFactor = 72;
                     } else if (bodyScore == "Stage 5") {
-                        // tested
                         lsFactor = 52;
                     }
                 }
             } else if (breedSize == "Large") {
                 if (ageMonths < 12 && ageYears < 1) {
-                    // tested
                     lsFactor = 115;
                 } else if (ageYears < 12) {
                     if (bodyScore == "Stage 1") {
-                        // tested
                         lsFactor = 82;
                     } else if (bodyScore == "Stage 5") {
-                        // tested
                         lsFactor = 62;
                     } else {
-                        if (activityLevel == "Highly Active / Working Dog (3 to 6 hours)") {
-                            // tested
+                        if (activityLevel == "Highly Active / Working Dog  (3 to 6 hours)") {
                             lsFactor = 100;
-                        } else if (activityLevel == "Moderately Active (1-3 hours per day)") {
-                            // tested
+                        } else if (activityLevel == "Moderately Active  (1-3 hours per day)") {
                             lsFactor = 72;
                         } else if (activityLevel == "Lazy / Low (Less than 1 hour per day)") {
-                            // tested
                             lsFactor = 72;
                         }
                     }
                 } else {
                     if (activityLevel == "Lazy / Low (Less than 1 hour per day)") {
-                        // tested
                         lsFactor = 52;
                     } else if (["Stage 2","Stage 3","Stage 4"].indexOf(bodyScore) > -1) {
-                        // tested
                         lsFactor = 62;
                     } else if (bodyScore == "Stage 1") {
-                        // tested
                         lsFactor = 72;
                     } else if (bodyScore == "Stage 5") {
-                        // tested
                         lsFactor = 52; 
                     }
                 }
             } else if (breedSize == "Giant") {
                 if (ageMonths < 12 && ageYears < 2) {
-                    // tested
                     lsFactor = 115;
                 } else if (ageYears < 10) {
                     if (bodyScore == "Stage 1") {
-                        // tested
                         lsFactor = 82;
                     } else if (bodyScore == "Stage 5") {
-                        // tested
                         lsFactor = 62;
                     } else {
-                        if (activityLevel == "Highly Active / Working Dog (3 to 6 hours)") {
-                            // tested
+                        if (activityLevel == "Highly Active / Working Dog  (3 to 6 hours)") {
                             lsFactor = 100;
-                        } else if (activityLevel == "Moderately Active (1-3 hours per day)") {
-                            // tested
+                        } else if (activityLevel == "Moderately Active  (1-3 hours per day)") {
                             lsFactor = 72;
                         } else if (activityLevel == "Lazy / Low (Less than 1 hour per day)") {
-                            // tested
                             lsFactor = 72;
                         }
                     }
                 } else {
                     if (activityLevel == "Lazy / Low (Less than 1 hour per day)") {
-                        // tested
                         lsFactor = 52;
                     } else if (["Stage 2","Stage 3","Stage 4"].indexOf(bodyScore) > -1) {
-                        // tested
                         lsFactor = 62;
                     } else if (bodyScore == "Stage 1") {
-                        // tested
                         lsFactor = 72;
                     } else if (bodyScore == "Stage 5") {
-                        // tested
                         lsFactor = 52;
                     }
                 }
             } // end of breed size dog 
         } else if (petType == "Cat") {
             if (ageMonths < 6 && ageYears < 1) { 
-                // tested
                 lsFactor = 115;
             } else if (ageYears < 16) {
                 if (bodyScore == "Stage 1") {
-                    // tested
                     lsFactor = 82;
                 } else if (bodyScore == "Stage 5") {
-                    // tested
                     lsFactor = 62;
                 } else {
-                    if (activityLevel == "Highly Active / Working Dog (3 to 6 hours)") {
-                        // tested
+                    if (activityLevel == "Highly Active / Working Dog  (3 to 6 hours)") {
                         lsFactor = 100;
-                    } else if (activityLevel == "Moderately Active (1-3 hours per day)") {
-                        // tested
+                    } else if (activityLevel == "Moderately Active  (1-3 hours per day)") {
                         lsFactor = 72;
                     } else if (activityLevel == "Lazy / Low (Less than 1 hour per day)") {
-                        // tested
                         lsFactor = 72;
                     }
                 }
             } else {
                 if (activityLevel == "Lazy / Low (Less than 1 hour per day)") {
-                    // tested
                     lsFactor = 52;
                 } else if (["Stage 2","Stage 3","Stage 4"].indexOf(bodyScore) > -1) {
-                    // tested
                     lsFactor = 62;
                 } else if (bodyScore == "Stage 1") {
-                    //tested
                     lsFactor = 72;
                 } else if (bodyScore == "Stage 5") {
-                    // tested
                     lsFactor = 52;
                 }
             }
@@ -233,25 +173,22 @@
         } else {
             result = "lsFactor unable to be calculated";
         }
-        console.log(result);
+ console.log(result);  
+  $form.find('input[name="TICKET.calculation__results"]').val(result).change();
     } // end of calculateResult function
+</script>
 
-    
-    // $form.find('input[name="calculation__result"]').val(result);
-    calculateResult(0);
+<script>
+    hbspt.forms.create({
+      region: "na1",
+      portalId: "4119026",
+      formId: "d5e1d82e-0bf1-43b6-b5a7-c83f316057b6",
+      onFormSubmit: function($form) {
+        calculateResult($form);
+      },
+  }); 
+</script> 
 
-    
-    </script>
-    <!-- <script>
-        hbspt.forms.create({
-          region: "na1",
-          portalId: "4119026",
-          formId: "d5e1d82e-0bf1-43b6-b5a7-c83f316057b6",
-          onFormSubmit: function($form, ctx) {
-            calculateResult($form)
-          }
-      });
-      </script> -->
 </head>
 <body>
     <h1>Testing Calculator</h1>
